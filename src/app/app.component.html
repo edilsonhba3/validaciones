@@ -4,10 +4,29 @@
 
 <p>
 
-  <input type="text" maxlength="10" (blur)="validateDate($event)" [(ngModel)]="fecha" placeholder="dd/mm/yyyy"/>
+  <input type="text"
+  maxlength="10" (blur)="validateDate($event)" 
+  [(ngModel)]="fecha" placeholder="dd/mm/yyyy"/>
 
 <br/>
 
    <input type="text" min="1" maxlength="10" (blur)="validateNumber($event)" [(ngModel)]="numero" placeholder="##.##"/>
- 
+
+   
+   <p-inputMask mask="99/99/9999" 
+   [(ngModel)]="fecha" 
+   placeholder="dd/mm/yyyy" 
+   (onBlur)="validateDate($event)" ></p-inputMask>
+
+
+
 </p>
+
+
+<br/>
+<hr>
+
+{{fecha}}
+
+<hr>
+<button (click)="save()">save</button>

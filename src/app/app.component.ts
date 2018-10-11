@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { isNumber } from 'util';
+import {InputMaskModule} from 'primeng/inputmask';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,7 @@ export class AppComponent {
   numero;
 
   validateDate(inputObject){
+    console.log(inputObject)
     let part = (inputObject.target.value || '').split('/'), 
     newDate = new Date(part[2], --part[1], part[0]);
     
@@ -20,6 +23,9 @@ export class AppComponent {
      && part[1] == newDate.getMonth()
      && part[2] == newDate.getFullYear())) {
         inputObject.target.value = '';
+        this.fecha = '';
+    } else {
+      this.fecha = inputObject.target.value;
     }
   }
 
@@ -30,4 +36,7 @@ export class AppComponent {
     }    
   }
 
+  save() {
+    console.log(this.fecha);
+  }
 }
